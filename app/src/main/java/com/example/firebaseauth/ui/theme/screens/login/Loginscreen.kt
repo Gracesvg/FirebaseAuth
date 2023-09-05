@@ -23,6 +23,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
@@ -31,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.firebaseauth.data.AuthViewModel
 import com.example.firebaseauth.navigation.ROUT_LOGIN
 import com.example.firebaseauth.navigation.ROUT_REGISTER
 
@@ -40,6 +42,8 @@ fun Loginscreen(navController:NavHostController){
     var email by remember { mutableStateOf(TextFieldValue("" ))}
     var pass by remember { mutableStateOf(TextFieldValue("" ))}
     var confirmpass by remember { mutableStateOf(TextFieldValue("" ))}
+    val context= LocalContext.current
+
     Column (modifier=Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally){
         Text(text = "Login here",
@@ -63,7 +67,10 @@ fun Loginscreen(navController:NavHostController){
                 .fillMaxWidth()
                 .padding(8.dp),)
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+        Button(onClick = {
+            val mylogin =AuthViewModel(navController, context )
+            mylogin.login(email.text.trim(),pass.text.trim())
+        }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Log in")
         }
         Spacer(modifier = Modifier.height(20.dp))

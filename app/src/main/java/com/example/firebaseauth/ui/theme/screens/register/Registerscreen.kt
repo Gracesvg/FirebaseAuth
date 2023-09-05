@@ -19,6 +19,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.TextFieldValue
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.RegisterReceiverFlags
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.firebaseauth.data.AuthViewModel
 import com.example.firebaseauth.navigation.ROUT_REGISTER
 
 
@@ -37,6 +39,8 @@ fun Registerscreen(navController: NavHostController) {
     var email by remember { mutableStateOf(TextFieldValue("")) }
     var pass by remember { mutableStateOf(TextFieldValue("")) }
     var confirmpass by remember { mutableStateOf(TextFieldValue("")) }
+    val context= LocalContext.current
+
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -83,7 +87,10 @@ fun Registerscreen(navController: NavHostController) {
                 .padding(8.dp),
         )
         Spacer(modifier = Modifier.height(20.dp))
-        Button(onClick = { /*TODO*/ }, modifier = Modifier.fillMaxWidth()) {
+        Button(onClick = {
+            val myregister = AuthViewModel(navController, context )
+            myregister.signup(email.text.trim(),pass.text.trim(),confirmpass.text.trim())
+        }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Register")
         }
         Spacer(modifier = Modifier.height(20.dp))
