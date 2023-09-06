@@ -9,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.firebaseauth.ui.theme.screens.login.Loginscreen
+import com.example.firebaseauth.ui.theme.screens.register.Registerscreen
 
 @Composable
 fun AppNavHost(modifier: Modifier=Modifier, navController: NavHostController = rememberNavController(), startDestination: String= ROUT_LOGIN){
@@ -17,6 +18,7 @@ fun AppNavHost(modifier: Modifier=Modifier, navController: NavHostController = r
             Loginscreen(navController)
         }
         composable(ROUT_REGISTER){
-                  }
+            Registerscreen(navController)
+        }
         }
     }

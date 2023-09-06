@@ -53,9 +53,5 @@ class AuthViewModel (var navController:NavHostController,var context: Context){
         fun isloggedin():Boolean{
             return mAuth.currentUser!=null
         }
-
-
-
-
     }
 
