@@ -19,15 +19,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.firebaseauth.data.productviewmodel
 import com.example.firebaseauth.navigation.ROUT_ADDPRODUCT
 import com.example.firebaseauth.navigation.ROUT_VIEWPRODUCT
+import productviewmodel
 
 
 @Composable
 fun Homescreen(navController: NavHostController){
     val context = LocalContext.current
-    var productdata = productviewmodel(navController, context)
+    var productdata=productviewmodel(navController,context)
 
 
     Column (modifier= Modifier
@@ -35,25 +35,31 @@ fun Homescreen(navController: NavHostController){
 
         horizontalAlignment = Alignment.CenterHorizontally){
         Text(text = "Welcome to Homepage",
-            color= Color.Black,
+            color= Color.White,
             fontSize = 30.sp,
             fontFamily = FontFamily.Monospace)
-        Spacer(modifier = Modifier.height(50.dp))
-        Button(onClick = {
-            navController.navigate(ROUT_ADDPRODUCT)
-        }) {
+        Spacer(modifier = Modifier.height(100.dp))
+
+        Button( onClick = {
+            navController.navigate(ROUT_ADDPRODUCT) }
+            ,Modifier.fillMaxWidth()){
             Text(text = "Add Product",
                 color= Color.Black,
                 fontSize = 30.sp,
-                fontFamily = FontFamily.Monospace)
-            Spacer(modifier = Modifier.height(50.dp)) }
+                fontFamily = FontFamily.Monospace)}
+        Spacer(modifier = Modifier.height(100.dp))
+
+
         Button( onClick = {
-            navController.navigate(ROUT_VIEWPRODUCT)
-        },Modifier.fillMaxWidth()){
+            navController.navigate(ROUT_VIEWPRODUCT) }
+            ,Modifier.fillMaxWidth()){
             Text(text = "View Product",
-        }
+                    color= Color.Black,
+                    fontSize = 30.sp,
+                    fontFamily = FontFamily.Monospace)}
+            }
     }
-}
+
 
 @Preview
 @Composable

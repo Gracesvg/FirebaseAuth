@@ -2,7 +2,6 @@
 
 package com.example.firebaseauth.ui.theme.screens.login
 
-import android.widget.Button
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,7 +13,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -32,8 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.firebaseauth.data.AuthViewModel
-import com.example.firebaseauth.navigation.ROUT_LOGIN
+import com.example.firebaseauth.data.Authviewmodel
 import com.example.firebaseauth.navigation.ROUT_REGISTER
 
 
@@ -68,7 +65,7 @@ fun Loginscreen(navController:NavHostController){
                 .padding(8.dp),)
         Spacer(modifier = Modifier.height(20.dp))
         Button(onClick = {
-            val mylogin =AuthViewModel(navController, context )
+            val mylogin =Authviewmodel(navController, context )
             mylogin.login(email.text.trim(),pass.text.trim())
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Log in")

@@ -26,10 +26,9 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat.RegisterReceiverFlags
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.firebaseauth.data.AuthViewModel
+import com.example.firebaseauth.data.Authviewmodel
 import com.example.firebaseauth.navigation.ROUT_REGISTER
 
 
@@ -88,7 +87,7 @@ fun Registerscreen(navController: NavHostController) {
         )
         Spacer(modifier = Modifier.height(20.dp))
         Button(onClick = {
-            val myregister = AuthViewModel(navController, context )
+            val myregister = Authviewmodel(navController, context )
             myregister.signup(email.text.trim(),pass.text.trim(),confirmpass.text.trim())
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Register")
