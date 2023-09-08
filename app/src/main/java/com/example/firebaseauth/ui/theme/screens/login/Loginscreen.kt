@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.firebaseauth.data.Authviewmodel
+import com.example.firebaseauth.navigation.ROUT_HOME
 import com.example.firebaseauth.navigation.ROUT_REGISTER
 
 
@@ -67,6 +68,7 @@ fun Loginscreen(navController:NavHostController){
         Button(onClick = {
             val mylogin =Authviewmodel(navController, context )
             mylogin.login(email.text.trim(),pass.text.trim())
+            navController.navigate(ROUT_HOME)
         }, modifier = Modifier.fillMaxWidth()) {
             Text(text = "Log in")
         }

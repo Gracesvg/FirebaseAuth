@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.firebaseauth.navigation.ROUT_VIEWPRODUCT
 import productviewmodel
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,7 +84,8 @@ fun AddProductsScreen(navController: NavHostController) {
             //-----------WRITE THE SAVE LOGIC HERE---------------//
             val productRepository = productviewmodel(navController,context)
             productRepository.saveProduct(productName.text.trim(),productQuantity.text.trim(),
-                productPrice.text)        }) {
+                productPrice.text)
+        navController.navigate(ROUT_VIEWPRODUCT)}) {
             Text(text = "Save")
         }
 

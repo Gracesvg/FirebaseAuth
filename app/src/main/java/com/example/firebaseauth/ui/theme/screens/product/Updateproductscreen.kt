@@ -120,6 +120,6 @@ fun UpdateProductsScreen(navController: NavHostController,id:String) {
 
 @Preview
 @Composable
-fun update() {
+fun Updateprod() {
     UpdateProductsScreen(rememberNavController(), id = "")
 }

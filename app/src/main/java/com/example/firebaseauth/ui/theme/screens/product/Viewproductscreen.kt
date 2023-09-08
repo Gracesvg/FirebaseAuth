@@ -99,6 +99,6 @@ fun ViewProductScreen(navController: NavHostController) {
 
     @Preview
     @Composable
-    fun ViewProduct() {
+    fun ViewProductPrev() {
         ViewProductScreen(rememberNavController())
     }
