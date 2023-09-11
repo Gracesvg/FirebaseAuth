@@ -1,5 +1,6 @@
 package com.example.firebaseauth.ui.theme.screens.home
 
+import Productviewmodel
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -21,13 +22,12 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.firebaseauth.navigation.ROUT_ADDPRODUCT
 import com.example.firebaseauth.navigation.ROUT_VIEWPRODUCT
-import productviewmodel
 
 
 @Composable
 fun Homescreen(navController: NavHostController){
     val context = LocalContext.current
-    var productdata=productviewmodel(navController,context)
+    var productdata=Productviewmodel(navController,context)
 
 
     Column (modifier= Modifier

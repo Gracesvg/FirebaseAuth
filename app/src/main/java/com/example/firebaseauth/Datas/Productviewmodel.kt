@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 
-class productviewmodel(var navController: NavHostController, var context: Context) {
+class Productviewmodel(var navController: NavHostController, var context: Context) {
     var authRepository: Authviewmodel
     var progress: ProgressDialog
 

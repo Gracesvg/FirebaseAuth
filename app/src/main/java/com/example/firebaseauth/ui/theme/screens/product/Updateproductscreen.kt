@@ -1,5 +1,6 @@
 package com.example.firebaseauth.ui.theme.screens.product
 
+import Productviewmodel
 import com.example.firebaseauth.models.Product
 import android.content.res.Configuration
 import android.widget.Toast
@@ -36,7 +37,6 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import productviewmodel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -106,7 +106,7 @@ fun UpdateProductsScreen(navController: NavHostController,id:String) {
 
        Button(onClick = {
 //            //-----------WRITE THE SAVE LOGIC HERE---------------//
-            val productRepository = productviewmodel(navController,context)
+            val productRepository = Productviewmodel(navController,context)
            productRepository.saveProduct(productName.text.trim(),productQuantity.text.trim(),
                 productPrice.text)
 

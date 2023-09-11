@@ -1,5 +1,6 @@
 package com.example.firebaseauth.ui.theme.screens.product
 
+import Productviewmodel
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -31,7 +32,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.firebaseauth.navigation.ROUT_VIEWPRODUCT
-import productviewmodel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -82,7 +82,7 @@ fun AddProductsScreen(navController: NavHostController) {
 
         Button(onClick = {
             //-----------WRITE THE SAVE LOGIC HERE---------------//
-            val productRepository = productviewmodel(navController,context)
+            val productRepository = Productviewmodel(navController,context)
             productRepository.saveProduct(productName.text.trim(),productQuantity.text.trim(),
                 productPrice.text)
         navController.navigate(ROUT_VIEWPRODUCT)}) {

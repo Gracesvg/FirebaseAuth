@@ -1,4 +1,5 @@
 package com.example.firebaseauth.ui.theme.screens.product
+import Productviewmodel
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,7 +25,6 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.firebaseauth.models.Product
 import com.example.firebaseauth.navigation.ROUT_UPDATEPRODUCT
-import productviewmodel
 
 
 @Composable
@@ -35,7 +35,7 @@ fun ViewProductScreen(navController: NavHostController) {
         ) {
 
             val context = LocalContext.current
-            val productRepository = productviewmodel(navController, context)
+            val productRepository = Productviewmodel(navController, context)
             val emptyProductState = remember { mutableStateOf(Product("", "", "", "")) }
             val emptyProductsListState = remember { mutableStateListOf<Product>() }
 
@@ -56,7 +56,7 @@ fun ViewProductScreen(navController: NavHostController) {
 
                 Spacer(modifier = Modifier.height(20.dp))
 
-                LazyColumn() {
+                LazyColumn {
                     items(products) {
                         ProductItem(
                             name = it.name,
@@ -76,8 +76,7 @@ fun ViewProductScreen(navController: NavHostController) {
     @Composable
     fun ProductItem(
         name: String, quantity: String, price: String, id: String,
-        navController: NavHostController, productRepository: productviewmodel
-    ) {
+        navController: NavHostController, productRepository: Productviewmodel) {
 
         Column(modifier = Modifier.fillMaxWidth()) {
             Text(text = name)
@@ -89,7 +88,7 @@ fun ViewProductScreen(navController: NavHostController) {
                 Text(text = "Delete")
             }
             Button(onClick = {
-                navController.navigate(ROUT_UPDATEPRODUCT + "/$id")
+                navController.navigate("$ROUT_UPDATEPRODUCT/$id")
             }) {
                 Text(text = "Update")
             }
